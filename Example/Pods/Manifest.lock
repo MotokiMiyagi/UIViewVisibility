@@ -1,0 +1,35 @@
+PODS:
+  - FBSnapshotTestCase (2.1.2):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.2)
+  - FBSnapshotTestCase/Core (2.1.2)
+  - FBSnapshotTestCase/SwiftSupport (2.1.2):
+    - FBSnapshotTestCase/Core
+  - Nimble (3.2.0)
+  - Nimble-Snapshots (4.1.0):
+    - FBSnapshotTestCase (~> 2.0)
+    - Nimble
+    - Quick
+  - Quick (0.9.3)
+  - UIViewVisibility (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Nimble (~> 3.0)
+  - Nimble-Snapshots
+  - Quick (~> 0.8)
+  - UIViewVisibility (from `../`)
+
+EXTERNAL SOURCES:
+  UIViewVisibility:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 918c55861356ee83aee7843d759f55a18ff6982b
+  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
+  Nimble-Snapshots: 2da4d2ec829b458d6886c06812c52493fce284c9
+  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  UIViewVisibility: ccd998c8b30b40530118368f2e8af981fdda1509
+
+PODFILE CHECKSUM: fe0d0bdb6a057bd7b7b2c89b9fcf189b418c5756
+
+COCOAPODS: 1.0.1
