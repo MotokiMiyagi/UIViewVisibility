@@ -21,14 +21,14 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   UIViewVisibility:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 918c55861356ee83aee7843d759f55a18ff6982b
   Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
   Nimble-Snapshots: 2da4d2ec829b458d6886c06812c52493fce284c9
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
-  UIViewVisibility: ccd998c8b30b40530118368f2e8af981fdda1509
+  UIViewVisibility: 1292cfcdc7206f173b3f929004ece09902bd5c83
 
 PODFILE CHECKSUM: fe0d0bdb6a057bd7b7b2c89b9fcf189b418c5756
 

@@ -22,7 +22,7 @@ pod "UIViewVisibility"
 
 ## Author
 
-m-miyagi, m-miyagi@omwonlab.com
+Motoki Miyagi, lovingrocknroll@gmail.com
 
 ## License
 
