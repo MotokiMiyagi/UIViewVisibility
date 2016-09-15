@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abD-2F-ufc">
-                                <rect key="frame" x="0.0" y="64" width="600" height="375"/>
+                                <rect key="frame" x="0.0" y="94" width="600" height="345"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-Oy-JZU">
-                                        <rect key="frame" x="8" y="8" width="460" height="359"/>
+                                        <rect key="frame" x="8" y="8" width="460" height="329"/>
                                         <color key="backgroundColor" red="0.22352941179999999" green="0.77647058820000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top View Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vna-k7-tTq">
@@ -126,10 +126,10 @@
                             <constraint firstAttribute="trailing" secondItem="wE4-1L-McN" secondAttribute="trailing" id="z3K-9M-ua3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="LgP-aH-18D">
+                    <navigationItem key="navigationItem" prompt="Tap view to switch visibility" id="LgP-aH-18D">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="mZH-SA-dGA">
-                            <rect key="frame" x="170" y="6" width="260" height="33"/>
+                            <rect key="frame" x="170" y="36" width="260" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0eE-Ub-QyS">
