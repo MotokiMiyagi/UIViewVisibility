@@ -56,13 +56,12 @@ class ViewController: UIViewController {
 	
 	private var selectedView: UIView? = nil
 	
-	override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-		
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 
+		updateSegmentedControl()
 	}
-
+	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesEnded(touches, withEvent: event)
 	
@@ -85,27 +84,8 @@ extension ViewController {
 		}
 	}
 	
-	@IBAction func valueChangedAction(sender: UISegmentedControl) {
-		guard let view = selectedView else {
-			return
-		}
-
-		switch sender.selectedSegmentIndex {
-		case 0:
-			view.visibility = .Visible
-
-		case 1:
-			view.visibility = .Invisible
-
-		case 2:
-			view.visibility = .Gone(.Horizontally)
-
-		case 3:
-			view.visibility = .Gone(.Vertically)
-		
-		default:
-			break
-		}
+	@IBAction func valueChangedAction(sender: AnyObject) {
+		updateVisibility()
 	}
 }
 
@@ -115,7 +95,7 @@ private extension ViewController {
 
 	func updateSegmentedControl() {
 		guard let view = selectedView else {
-			segmentedControl.selected = false
+			segmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment
 			return
 		}
 
@@ -134,6 +114,33 @@ private extension ViewController {
 			case .Vertically:
 				segmentedControl.selectedSegmentIndex = 3
 			}
+		}
+	}
+
+	func updateVisibility() {
+		guard let view = selectedView else {
+			return
+		}
+		
+		switch segmentedControl.selectedSegmentIndex {
+		case 0:
+			view.visibility = .Visible
+			
+		case 1:
+			view.visibility = .Invisible
+			
+		case 2:
+			view.visibility = .Gone(.Horizontally)
+			
+		case 3:
+			view.visibility = .Gone(.Vertically)
+			
+		default:
+			break
+		}
+		
+		UIView.animateWithDuration(0.25) { [unowned weakSelf = self] in
+			weakSelf.view.layoutIfNeeded()
 		}
 	}
 }

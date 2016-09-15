@@ -14,6 +14,9 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		74E9CFDDCD8E51EE1B411337 /* Pods_UIViewVisibility_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87428B54940EFC263C78B71E /* Pods_UIViewVisibility_Tests.framework */; };
+		9B28367E1D8AA4BE0090A5A7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28367D1D8AA4BE0090A5A7 /* TableViewCell.swift */; };
+		9B7E079B1D8AA2E200DF2D70 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E079A1D8AA2E200DF2D70 /* ListViewController.swift */; };
+		9B7E079D1D8AA34900DF2D70 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E079C1D8AA34900DF2D70 /* TableViewController.swift */; };
 		DCE425E5B13600B0BDF502FF /* Pods_UIViewVisibility_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0031708C86FCEB9B7D7CC /* Pods_UIViewVisibility_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,9 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7DAC30D04E38CA2852D55564 /* Pods-UIViewVisibility_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIViewVisibility_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIViewVisibility_Tests/Pods-UIViewVisibility_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		87428B54940EFC263C78B71E /* Pods_UIViewVisibility_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIViewVisibility_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B28367D1D8AA4BE0090A5A7 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		9B7E079A1D8AA2E200DF2D70 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		9B7E079C1D8AA34900DF2D70 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		D5C0031708C86FCEB9B7D7CC /* Pods_UIViewVisibility_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIViewVisibility_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F065DA61FA665D628BB2B603 /* Pods-UIViewVisibility_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIViewVisibility_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIViewVisibility_Example/Pods-UIViewVisibility_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FAC68B8F7E5186EEB70C05AE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -105,7 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				9B7E079A1D8AA2E200DF2D70 /* ListViewController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				9B7E079C1D8AA34900DF2D70 /* TableViewController.swift */,
+				9B28367D1D8AA4BE0090A5A7 /* TableViewCell.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -359,8 +368,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B28367E1D8AA4BE0090A5A7 /* TableViewCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				9B7E079B1D8AA2E200DF2D70 /* ListViewController.swift in Sources */,
+				9B7E079D1D8AA34900DF2D70 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UIViewVisibility/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -503,6 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UIViewVisibility/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
