@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  UIViewVisibility
 //
-//  Created by m-miyagi on 09/15/2016.
-//  Copyright (c) 2016 m-miyagi. All rights reserved.
+//  Created by Motoki Miyagi on 09/15/2016.
+//  Copyright (c) 2016 Motoki Miyagi. All rights reserved.
 //
 
 import UIKit
@@ -56,13 +56,6 @@ class ViewController: UIViewController {
 	
 	private var selectedView: UIView? = nil
 	
-	override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-		
-
-	}
-
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesEnded(touches, withEvent: event)
 	

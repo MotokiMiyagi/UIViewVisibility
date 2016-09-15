@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  UIViewVisibility
 //
-//  Created by m-miyagi on 09/15/2016.
-//  Copyright (c) 2016 m-miyagi. All rights reserved.
+//  Created by Motoki Miyagi on 09/15/2016.
+//  Copyright (c) 2016 Motoki Miyagi. All rights reserved.
 //
 
 import UIKit

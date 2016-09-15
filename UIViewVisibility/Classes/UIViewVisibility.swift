@@ -2,7 +2,7 @@
 //  UIViewVisibility.swift
 //  Pods
 //
-//  Created by m-miyagi on 2016/09/15.
+//  Created by Motoki Miyagi on 2016/09/15.
 //
 //
 
