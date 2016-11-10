@@ -18,10 +18,11 @@ class TableViewCell: UITableViewCell {
 	
 	@IBOutlet weak var bottomLabel: UILabel!
 	
-	override func layoutSubviews() {		
-		super.layoutSubviews()
+	override func layoutSubviews() {
 		topLabel.preferredMaxLayoutWidth = topLabel.bounds.width
 		centerLabel.preferredMaxLayoutWidth = centerLabel.bounds.width
 		bottomLabel.preferredMaxLayoutWidth = bottomLabel.bounds.width
+
+		super.layoutSubviews()
 	}
 }

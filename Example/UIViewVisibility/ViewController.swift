@@ -106,7 +106,7 @@ private extension ViewController {
 		case .Invisible:
 			segmentedControl.selectedSegmentIndex = 1
 
-		case .Gone(let direction):
+		case .Gone(let direction, to: _):
 			switch direction {
 			case .Horizontally:
 				segmentedControl.selectedSegmentIndex = 2
@@ -130,10 +130,11 @@ private extension ViewController {
 			view.visibility = .Invisible
 			
 		case 2:
-			view.visibility = .Gone(.Horizontally)
+			view.visibility = .Gone(.Horizontally, to: .Center)
+			view.visibility = .Gone(.Horizontally, to: .Center)
 			
 		case 3:
-			view.visibility = .Gone(.Vertically)
+			view.visibility = .Gone(.Vertically, to: .Center)
 			
 		default:
 			break
@@ -143,4 +144,20 @@ private extension ViewController {
 			weakSelf.view.layoutIfNeeded()
 		}
 	}
+}
+
+
+extension ViewController: UIPickerViewDataSource {
+	
+	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+		return 1;
+	}
+
+	func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return UIView.Visibility.enums.count
+	}
+}
+
+extension ViewController: UIPickerViewDelegate {
+	
 }

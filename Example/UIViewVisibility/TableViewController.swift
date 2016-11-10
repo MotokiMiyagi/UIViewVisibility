@@ -110,7 +110,7 @@ extension TableViewController: UITableViewDataSource {
 			cell.horizontalSpaceView.visibility = .Visible
 		}
 		else {
-			cell.horizontalSpaceView.visibility = .Gone(.Horizontally)
+			cell.horizontalSpaceView.visibility = .Gone(.Horizontally, to: .Center)
 		}
 		
 		// top label (red)
@@ -122,7 +122,7 @@ extension TableViewController: UITableViewDataSource {
 			cell.centerLabel.text = centerText
 		}
 		else {
-			cell.centerLabel.superview?.visibility = .Gone(.Vertically)
+			cell.centerLabel.superview?.visibility = .Gone(.Vertically, to: .Center)
 		}
 
 		// bottom label (blue)
@@ -131,7 +131,7 @@ extension TableViewController: UITableViewDataSource {
 			cell.bottomLabel.text = bottomText
 		}
 		else {
-			cell.bottomLabel.superview?.visibility = .Gone(.Vertically)
+			cell.bottomLabel.superview?.visibility = .Gone(.Vertically, to: .Center)
 		}
 		
 		cell.updateConstraintsIfNeeded()
