@@ -189,7 +189,8 @@ private extension UIView {
 // MARK: - Public Extension
 public extension UIView {
 
-	public enum Stick : Equatable {
+	
+	public enum Stick: Equatable {
 		case Left
 		case Right
 		case Top
@@ -211,7 +212,7 @@ public extension UIView {
 			}
 		}
 		
-		func stringValue() -> String {
+		public func stringValue() -> String {
 			switch self {
 			case .Left:
 				return "Left"
@@ -229,7 +230,7 @@ public extension UIView {
 		}
 	}
 
-	enum Direction: Equatable {
+	public enum Direction: Equatable {
 		case Horizontally
 		case Vertically
 		
@@ -253,11 +254,11 @@ public extension UIView {
 		}
 	}
 	
-	enum Visibility: Equatable {
+	public enum Visibility: Equatable {
 		case Visible
 		case Invisible
 		case Gone(Direction, to:Stick)
-	
+		
 		public static var enums: [Visibility] {
 			get {
 				var enums: [Visibility] = [
@@ -286,7 +287,6 @@ public extension UIView {
 			}
 		}
 	}
-	
 	
 	var visibility: Visibility {
 		get {
@@ -356,7 +356,7 @@ public extension UIView {
 					.Trailing,
 					.Width,
 					.CenterX,
-					.Baseline,
+					.LastBaseline,
 					.FirstBaseline,
 					.LeftMargin,
 					.RightMargin,
@@ -452,7 +452,7 @@ public extension UIView {
 		
 		// animate
 		if animated {
-			var clipsToBounds = self.clipsToBounds
+			let clipsToBounds = self.clipsToBounds
 			self.clipsToBounds = true
 			self.alpha = self.hidden ? 0.0 : 1.0
 			self.hidden = false
