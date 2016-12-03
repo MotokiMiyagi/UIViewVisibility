@@ -10,7 +10,7 @@ import UIKit
 
 
 extension String {
-	static func randomAlphaNumeric(length: Int) -> String {
+	static func randomAlphaNumeric(_ length: Int) -> String {
 		
 		let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 		let allowedCharsCount = UInt32(allowedChars.characters.count)
@@ -18,7 +18,7 @@ extension String {
 		
 		for _ in (0..<length) {
 			let randomNum = Int(arc4random_uniform(allowedCharsCount))
-			let newCharacter = allowedChars[allowedChars.startIndex.advancedBy(randomNum)]
+			let newCharacter = allowedChars[allowedChars.characters.index(allowedChars.startIndex, offsetBy: randomNum)]
 			randomString += String(newCharacter)
 		}
 		
@@ -77,10 +77,10 @@ class TableViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.min))
+		tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
 	}
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewDidLoad()
 		
 		view.layoutIfNeeded()
@@ -91,12 +91,12 @@ class TableViewController: UIViewController {
 extension TableViewController: UITableViewDataSource {
 	// MARK: - Table view data source
 
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return items.count
 	}
 	
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("TableViewCell", forIndexPath: indexPath) as! TableViewCell
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
 //		if cell.frame.size.width != tableView.bounds.width {
 //			cell.frame.size.width = tableView.bounds.width
 //			cell.setNeedsLayout()
@@ -107,10 +107,10 @@ extension TableViewController: UITableViewDataSource {
 		
 		// yellow view
 		if item.horizontalSpace {
-			cell.horizontalSpaceView.visibility = .Visible
+			cell.horizontalSpaceView.visibility = .visible
 		}
 		else {
-			cell.horizontalSpaceView.visibility = .Gone(.Horizontally, to: .Center)
+			cell.horizontalSpaceView.visibility = .gone(.horizontally, to: .center)
 		}
 		
 		// top label (red)
@@ -118,20 +118,20 @@ extension TableViewController: UITableViewDataSource {
 		
 		// center label (green)
 		if let centerText = item.centerText {
-			cell.centerLabel.superview?.visibility = .Visible
+			cell.centerLabel.superview?.visibility = .visible
 			cell.centerLabel.text = centerText
 		}
 		else {
-			cell.centerLabel.superview?.visibility = .Gone(.Vertically, to: .Center)
+			cell.centerLabel.superview?.visibility = .gone(.vertically, to: .center)
 		}
 
 		// bottom label (blue)
 		if let bottomText = item.bottomText {
-			cell.bottomLabel.superview?.visibility = .Visible
+			cell.bottomLabel.superview?.visibility = .visible
 			cell.bottomLabel.text = bottomText
 		}
 		else {
-			cell.bottomLabel.superview?.visibility = .Gone(.Vertically, to: .Center)
+			cell.bottomLabel.superview?.visibility = .gone(.vertically, to: .center)
 		}
 		
 		cell.updateConstraintsIfNeeded()
@@ -145,11 +145,11 @@ extension TableViewController: UITableViewDataSource {
 
 extension TableViewController: UITableViewDelegate {
 	
-	func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
 	}
 	
-	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
 	}
 }

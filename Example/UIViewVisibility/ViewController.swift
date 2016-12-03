@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 	
 	// MARK: Private Properties
 	
-	private var accessingViews: [UIView] {
+	fileprivate var accessingViews: [UIView] {
 		return [
 			topView,
 			contentView,
@@ -54,16 +54,16 @@ class ViewController: UIViewController {
 		]
 	}
 	
-	private var selectedView: UIView? = nil
+	fileprivate var selectedView: UIView? = nil
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 		updateSegmentedControl()
 	}
 	
-	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		super.touchesEnded(touches, withEvent: event)
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesEnded(touches, with: event)
 	
 		selectedView = touches.first?.view
 		updateSegmentedControl()
@@ -74,17 +74,17 @@ class ViewController: UIViewController {
 // MARK: IBAction
 extension ViewController {
 	
-	@IBAction func refreshAction(sender: AnyObject) {
+	@IBAction func refreshAction(_ sender: AnyObject) {
 		
 		selectedView = nil
 		updateSegmentedControl()
 
 		accessingViews.forEach { (view: UIView) in
-			view.visibility = .Visible
+			view.visibility = .visible
 		}
 	}
 	
-	@IBAction func valueChangedAction(sender: AnyObject) {
+	@IBAction func valueChangedAction(_ sender: AnyObject) {
 		updateVisibility()
 	}
 }
@@ -100,18 +100,18 @@ private extension ViewController {
 		}
 
 		switch view.visibility {
-		case .Visible:
+		case .visible:
 			segmentedControl.selectedSegmentIndex = 0
 
-		case .Invisible:
+		case .invisible:
 			segmentedControl.selectedSegmentIndex = 1
 
-		case .Gone(let direction, to: _):
+		case .gone(let direction, to: _):
 			switch direction {
-			case .Horizontally:
+			case .horizontally:
 				segmentedControl.selectedSegmentIndex = 2
 				
-			case .Vertically:
+			case .vertically:
 				segmentedControl.selectedSegmentIndex = 3
 			}
 		}
@@ -124,43 +124,45 @@ private extension ViewController {
 		
 		switch segmentedControl.selectedSegmentIndex {
 		case 0:
-			view.visibility = .Visible
+			view.visibility = .visible
 			
 		case 1:
-			view.visibility = .Invisible
+			view.visibility = .invisible
 			
 		case 2:
-			view.visibility = .Gone(.Horizontally, to: .Center)
-			view.visibility = .Gone(.Horizontally, to: .Center)
+			view.visibility = .gone(.horizontally, to: .center)
+			view.visibility = .gone(.horizontally, to: .center)
 			
 		case 3:
-			view.visibility = .Gone(.Vertically, to: .Center)
+			view.visibility = .gone(.vertically, to: .center)
 			
 		default:
 			break
 		}
 		
-		UIView.animateWithDuration(0.25) { [unowned weakSelf = self] in
+		UIView.animate(withDuration: 0.25, animations: { [unowned weakSelf = self] in
 			weakSelf.view.layoutIfNeeded()
-		}
+		}) 
 	}
 }
 
 
 extension ViewController: UIPickerViewDataSource {
 	
-	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
 	}
 
-	func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return UIView.Visibility.enums.count
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//		return UIView.Visibility.enums.count
+		return 3
 	}
 }
 
 extension ViewController: UIPickerViewDelegate {
-	func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		return UIView.Visibility.enums[row].stringValue()
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//		return UIView.Visibility.enums[row].stringValue()
+		return ""
 	}
 }
 

@@ -15,94 +15,94 @@ Equatable UIView.Stick
 */
 public func ==(lhs: UIView.Stick, rhs: UIView.Stick) -> Bool {
 	switch lhs {
-	case .Left:
+	case .left:
 		switch rhs {
-		case .Left:
+		case .left:
 			return true
-		case .Right:
+		case .right:
 			return false
-		case .Top:
+		case .top:
 			return false
-		case .Bottom:
+		case .bottom:
 			return false
-		case .Center:
+		case .center:
 			return false
-		case .None:
+		case .none:
 			return false
 		}
-	case .Right:
+	case .right:
 		switch rhs {
-		case .Left:
+		case .left:
 			return false
-		case .Right:
+		case .right:
 			return true
-		case .Top:
+		case .top:
 			return false
-		case .Bottom:
+		case .bottom:
 			return false
-		case .Center:
+		case .center:
 			return false
-		case .None:
+		case .none:
 			return false
 		}
-	case .Top:
+	case .top:
 		switch rhs {
-		case .Left:
+		case .left:
 			return false
-		case .Right:
+		case .right:
 			return false
-		case .Top:
+		case .top:
 			return true
-		case .Bottom:
+		case .bottom:
 			return false
-		case .Center:
+		case .center:
 			return false
-		case .None:
+		case .none:
 			return false
 		}
-	case .Bottom:
+	case .bottom:
 		switch rhs {
-		case .Left:
+		case .left:
 			return false
-		case .Right:
+		case .right:
 			return false
-		case .Top:
+		case .top:
 			return false
-		case .Bottom:
+		case .bottom:
 			return true
-		case .Center:
+		case .center:
 			return false
-		case .None:
+		case .none:
 			return false
 		}
-	case .Center:
+	case .center:
 		switch rhs {
-		case .Left:
+		case .left:
 			return false
-		case .Right:
+		case .right:
 			return false
-		case .Top:
+		case .top:
 			return false
-		case .Bottom:
+		case .bottom:
 			return false
-		case .Center:
+		case .center:
 			return true
-		case .None:
+		case .none:
 			return false
 		}
-	case .None:
+	case .none:
 		switch rhs {
-		case .Left:
+		case .left:
 			return false
-		case .Right:
+		case .right:
 			return false
-		case .Top:
+		case .top:
 			return false
-		case .Bottom:
+		case .bottom:
 			return false
-		case .Center:
+		case .center:
 			return false
-		case .None:
+		case .none:
 			return true
 		}
 	}
@@ -113,19 +113,19 @@ Equatable UIView.Direction
 */
 public func ==(lhs: UIView.Direction, rhs: UIView.Direction) -> Bool {
 	switch lhs {
-	case .Horizontally:
+	case .horizontally:
 		switch rhs {
-		case .Horizontally:
+		case .horizontally:
 			return true
-		case .Vertically:
+		case .vertically:
 			return false
 		}
 		
-	case .Vertically:
+	case .vertically:
 		switch rhs {
-		case .Horizontally:
+		case .horizontally:
 			return false
-		case .Vertically:
+		case .vertically:
 			return true
 		}
 	}
@@ -136,25 +136,25 @@ Equatable UIView.Visibility
 */
 public func ==(lhs: UIView.Visibility, rhs: UIView.Visibility) -> Bool {
 	switch lhs {
-	case .Visible:
+	case .visible:
 		switch rhs {
-		case .Visible:
+		case .visible:
 			return true
 		default:
 			return false
 		}
 		
-	case .Invisible:
+	case .invisible:
 		switch rhs {
-		case .Invisible:
+		case .invisible:
 			return true
 		default:
 			return false
 		}
 		
-	case .Gone(let lhsDirection, let lhsStick):
+	case .gone(let lhsDirection, let lhsStick):
 		switch rhs {
-		case .Gone(let rhsDirection, let rhsStick):
+		case .gone(let rhsDirection, let rhsStick):
 			return lhsDirection == rhsDirection && lhsStick == rhsStick
 		default:
 			return false
@@ -191,22 +191,22 @@ public extension UIView {
 
 	
 	public enum Stick: Equatable {
-		case Left
-		case Right
-		case Top
-		case Bottom
-		case Center
-		case None
+		case left
+		case right
+		case top
+		case bottom
+		case center
+		case none
 		
 		public static var enums: [Stick] {
 			get {
 				let enums: [Stick] = [
-					.Left,
-					.Right,
-					.Top,
-					.Bottom,
-					.Center,
-					.None,
+					.left,
+					.right,
+					.top,
+					.bottom,
+					.center,
+					.none,
 					]
 				return enums
 			}
@@ -214,31 +214,31 @@ public extension UIView {
 		
 		public func stringValue() -> String {
 			switch self {
-			case .Left:
+			case .left:
 				return "Left"
-			case .Right:
+			case .right:
 				return "Right"
-			case .Top:
+			case .top:
 				return "Top"
-			case .Bottom:
+			case .bottom:
 				return "Bottom"
-			case .Center:
+			case .center:
 				return "Bottom"
-			case .None:
+			case .none:
 				return "None"
 			}
 		}
 	}
 
 	public enum Direction: Equatable {
-		case Horizontally
-		case Vertically
+		case horizontally
+		case vertically
 		
 		public static var enums: [Direction] {
 			get {
 				let enums: [Direction] = [
-					.Horizontally,
-					.Vertically,
+					.horizontally,
+					.vertically,
 					]
 				return enums
 			}
@@ -246,29 +246,29 @@ public extension UIView {
 		
 		func stringValue() -> String {
 			switch self {
-			case .Horizontally:
+			case .horizontally:
 				return "Horizontally"
-			case .Vertically:
+			case .vertically:
 				return "Vertically"
 			}
 		}
 	}
 	
 	public enum Visibility: Equatable {
-		case Visible
-		case Invisible
-		case Gone(Direction, to:Stick)
+		case visible
+		case invisible
+		case gone(Direction, to:Stick)
 		
 		public static var enums: [Visibility] {
 			get {
 				var enums: [Visibility] = [
-					.Visible,
-					.Invisible,
+					.visible,
+					.invisible,
 					]
 				
 				for direction in Direction.enums {
 					for stick in Stick.enums {
-						enums.append(.Gone(direction, to: stick))
+						enums.append(.gone(direction, to: stick))
 					}
 				}
 				
@@ -278,11 +278,11 @@ public extension UIView {
 		
 		public func stringValue() -> String {
 			switch self {
-			case .Visible:
+			case .visible:
 				return "Visible"
-			case .Invisible:
+			case .invisible:
 				return "Invisible"
-			case .Gone(let direction, let stick):
+			case .gone(let direction, let stick):
 				return "Gone(\(direction.stringValue()), \(stick.stringValue()))"
 			}
 		}
@@ -291,15 +291,15 @@ public extension UIView {
 	var visibility: Visibility {
 		get {
 			if let rawVisibility = objc_getAssociatedObject(self, &AccociatedKeys.Visibility) as? NSValue {
-				var visibility = Visibility.Visible
+				var visibility = Visibility.visible
 				rawVisibility.getValue(&visibility)
 				return visibility
 			}
 			
-			if hidden {
-				return .Invisible
+			if isHidden {
+				return .invisible
 			}
-			return .Visible
+			return .visible
 		}
 		set {
 			if visibility == newValue {
@@ -309,7 +309,7 @@ public extension UIView {
 		}
 	}
 
-	func setVisibility(newValue: Visibility, animated: Bool = true, completion: (() -> Void)? = nil) {
+	func setVisibility(_ newValue: Visibility, animated: Bool = true, completion: (() -> Void)? = nil) {
 
 		// save the visibility
 		var mutableNewValue = newValue
@@ -322,61 +322,61 @@ public extension UIView {
 		}
 		
 		// deactivate current constraints
-		NSLayoutConstraint.deactivateConstraints(constraints)
+		NSLayoutConstraint.deactivate(constraints)
 		
 		// acitivate original constraints
 		if let originalConstraints = originalConstraints {
-			NSLayoutConstraint.activateConstraints(originalConstraints)
+			NSLayoutConstraint.activate(originalConstraints)
 		}
 		
 		var hidden = false
 		
 		switch newValue {
-		case .Visible:
+		case .visible:
 			hidden = false
 			
-		case .Invisible:
+		case .invisible:
 			hidden = true
 			
-		case .Gone(let direction, let stick):
+		case .gone(let direction, let stick):
 			hidden = true
 			
 			// deacitivate attributes
 			var deacitivateAttributes: [NSLayoutAttribute]
 			
 			// activate attribute
-			var activateAttribute = NSLayoutAttribute.NotAnAttribute
+			var activateAttribute = NSLayoutAttribute.notAnAttribute
 			
 			switch direction {
-			case .Horizontally:
+			case .horizontally:
 				deacitivateAttributes = [
-					.Left,
-					.Right,
-					.Leading,
-					.Trailing,
-					.Width,
-					.CenterX,
-					.LastBaseline,
-					.FirstBaseline,
-					.LeftMargin,
-					.RightMargin,
-					.LeadingMargin,
-					.TrailingMargin,
-					.CenterXWithinMargins,
+					.left,
+					.right,
+					.leading,
+					.trailing,
+					.width,
+					.centerX,
+					.lastBaseline,
+					.firstBaseline,
+					.leftMargin,
+					.rightMargin,
+					.leadingMargin,
+					.trailingMargin,
+					.centerXWithinMargins,
 				]
-				activateAttribute = .Width
+				activateAttribute = .width
 				
-			case .Vertically:
+			case .vertically:
 				deacitivateAttributes = [
-					.Top,
-					.Bottom,
-					.Height,
-					.CenterY,
-					.TopMargin,
-					.BottomMargin,
-					.CenterYWithinMargins,
+					.top,
+					.bottom,
+					.height,
+					.centerY,
+					.topMargin,
+					.bottomMargin,
+					.centerYWithinMargins,
 				]
-				activateAttribute = .Height
+				activateAttribute = .height
 			}
 
 			//
@@ -388,7 +388,7 @@ public extension UIView {
 					deactivateConstraints.append(constraint)
 				}
 			}
-			NSLayoutConstraint.deactivateConstraints(deactivateConstraints)
+			NSLayoutConstraint.deactivate(deactivateConstraints)
 
 			//
 			// activate the constraints
@@ -400,44 +400,44 @@ public extension UIView {
 				NSLayoutConstraint(
 					item: self,
 					attribute: activateAttribute,
-					relatedBy: .Equal,
+					relatedBy: .equal,
 					toItem: nil,
-					attribute: .NotAnAttribute,
+					attribute: .notAnAttribute,
 					multiplier: 1.0,
 					constant: 0.0
 				)
 			)
 			
 			// sticky attribute
-			if stick != .None {
+			if stick != .none {
 				var stickyAttribute: NSLayoutAttribute
 				switch stick {
-				case .Left:
-					stickyAttribute = .Leading
-				case .Right:
-					stickyAttribute = .Trailing
-				case .Top:
-					stickyAttribute = .Top
-				case .Bottom:
-					stickyAttribute = .Bottom
-				case .Center:
+				case .left:
+					stickyAttribute = .leading
+				case .right:
+					stickyAttribute = .trailing
+				case .top:
+					stickyAttribute = .top
+				case .bottom:
+					stickyAttribute = .bottom
+				case .center:
 					switch direction {
-					case .Horizontally:
-						stickyAttribute = .CenterX
-					case .Vertically:
-						stickyAttribute = .CenterY
+					case .horizontally:
+						stickyAttribute = .centerX
+					case .vertically:
+						stickyAttribute = .centerY
 					}
-				case .None:
-					stickyAttribute = .NotAnAttribute
+				case .none:
+					stickyAttribute = .notAnAttribute
 				}
 				
 				// stick to the specified edge
-				if let subview = self.subviews.first where stickyAttribute != .NotAnAttribute {
+				if let subview = self.subviews.first, stickyAttribute != .notAnAttribute {
 					activateConstraints.append(
 						NSLayoutConstraint(
 							item: self,
 							attribute: stickyAttribute,
-							relatedBy: .Equal,
+							relatedBy: .equal,
 							toItem: subview,
 							attribute: stickyAttribute,
 							multiplier: 1.0,
@@ -447,17 +447,17 @@ public extension UIView {
 				}
 			}
 			
-			NSLayoutConstraint.activateConstraints(activateConstraints)
+			NSLayoutConstraint.activate(activateConstraints)
 		}
 		
 		// animate
 		if animated {
 			let clipsToBounds = self.clipsToBounds
 			self.clipsToBounds = true
-			self.alpha = self.hidden ? 0.0 : 1.0
-			self.hidden = false
+			self.alpha = self.isHidden ? 0.0 : 1.0
+			self.isHidden = false
 			
-			UIView.animateWithDuration(0.25, animations:
+			UIView.animate(withDuration: 0.25, animations:
 				{
 					[weak self = self] in
 					self?.alpha = hidden ? 0.0 : 1.0
@@ -466,12 +466,12 @@ public extension UIView {
 				}, completion: {
 					[weak self = self] (finished: Bool) in
 					self?.clipsToBounds = clipsToBounds
-					self?.hidden = hidden
+					self?.isHidden = hidden
 					completion?()
 			})
 		}
 		else {
-			self.hidden = hidden
+			self.isHidden = hidden
 			completion?()
 		}
 	}
