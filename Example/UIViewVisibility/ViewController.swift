@@ -154,15 +154,15 @@ extension ViewController: UIPickerViewDataSource {
 	}
 
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//		return UIView.Visibility.enums.count
-		return 3
+		return UIView.Visibility.enums.count
+//		return 3
 	}
 }
 
 extension ViewController: UIPickerViewDelegate {
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//		return UIView.Visibility.enums[row].stringValue()
-		return ""
+		return UIView.Visibility.enums[row].stringValue()
+//		return ""
 	}
 }
 

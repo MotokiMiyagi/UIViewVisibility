@@ -1,6 +1,0 @@
-framework module UIViewVisibility {
-  umbrella header "UIViewVisibility-umbrella.h"
-
-  export *
-  module * { export * }
-}
