@@ -11,9 +11,9 @@ import UIKit
 
 // MARK: - Operator Overload
 /**
-Equatable UIView.Stick
+Equatable UIView.Sticky
 */
-public func ==(lhs: UIView.Stick, rhs: UIView.Stick) -> Bool {
+public func ==(lhs: UIView.Visibility.Sticky, rhs: UIView.Visibility.Sticky) -> Bool {
 	switch lhs {
 	case .left:
 		switch rhs {
@@ -111,7 +111,7 @@ public func ==(lhs: UIView.Stick, rhs: UIView.Stick) -> Bool {
 /**
 Equatable UIView.Direction
 */
-public func ==(lhs: UIView.Direction, rhs: UIView.Direction) -> Bool {
+public func ==(lhs: UIView.Visibility.Direction, rhs: UIView.Visibility.Direction) -> Bool {
 	switch lhs {
 	case .horizontally:
 		switch rhs {
@@ -119,6 +119,8 @@ public func ==(lhs: UIView.Direction, rhs: UIView.Direction) -> Bool {
 			return true
 		case .vertically:
 			return false
+        case .none:
+            return false
 		}
 		
 	case .vertically:
@@ -127,7 +129,18 @@ public func ==(lhs: UIView.Direction, rhs: UIView.Direction) -> Bool {
 			return false
 		case .vertically:
 			return true
+        case .none:
+            return false
 		}
+    case .none:
+        switch rhs {
+        case .horizontally:
+            return false
+        case .vertically:
+            return false
+        case .none:
+            return true
+        }
 	}
 }
 
@@ -152,10 +165,10 @@ public func ==(lhs: UIView.Visibility, rhs: UIView.Visibility) -> Bool {
 			return false
 		}
 		
-	case .gone(let lhsDirection, let lhsStick):
+	case .gone(let lhsDirection, let lhsSticky):
 		switch rhs {
-		case .gone(let rhsDirection, let rhsStick):
-			return lhsDirection == rhsDirection && lhsStick == rhsStick
+		case .gone(let rhsDirection, let rhsSticky):
+			return lhsDirection == rhsDirection && lhsSticky == rhsSticky
 		default:
 			return false
 		}
@@ -188,104 +201,74 @@ private extension UIView {
 
 // MARK: - Public Extension
 public extension UIView {
+    
+    
 
-	
-	public enum Stick: Equatable {
-		case left
-		case right
-		case top
-		case bottom
-		case center
-		case none
-		
-		public static var enums: [Stick] {
-			get {
-				let enums: [Stick] = [
-					.left,
-					.right,
-					.top,
-					.bottom,
-					.center,
-					.none,
-					]
-				return enums
-			}
-		}
-		
-		public func stringValue() -> String {
-			switch self {
-			case .left:
-				return "Left"
-			case .right:
-				return "Right"
-			case .top:
-				return "Top"
-			case .bottom:
-				return "Bottom"
-			case .center:
-				return "Bottom"
-			case .none:
-				return "None"
-			}
-		}
-	}
-
-	public enum Direction: Equatable {
-		case horizontally
-		case vertically
-		
-		public static var enums: [Direction] {
-			get {
-				let enums: [Direction] = [
-					.horizontally,
-					.vertically,
-					]
-				return enums
-			}
-		}
-		
-		func stringValue() -> String {
-			switch self {
-			case .horizontally:
-				return "Horizontally"
-			case .vertically:
-				return "Vertically"
-			}
-		}
-	}
 	
 	public enum Visibility: Equatable {
 		case visible
 		case invisible
-		case gone(Direction, to:Stick)
-		
-		public static var enums: [Visibility] {
+        case gone(Direction , to:Sticky)
+        
+        public enum Sticky: Equatable {
+            case left
+            case right
+            case top
+            case bottom
+            case center
+            case none
+            
+            public static var cases: [Sticky] {
+                get {
+                    return [
+                        .left,
+                        .right,
+                        .top,
+                        .bottom,
+                        .center,
+                        .none,
+                    ]
+                }
+            }
+            
+            public func stringValue() -> String {
+                return String(describing: self)
+            }
+        }
+
+        public enum Direction: Equatable {
+            case horizontally
+            case vertically
+            case none
+            
+            public static var cases: [Direction] {
+                get {
+                    return [
+                        .horizontally,
+                        .vertically,
+                        .none,
+                    ]
+                }
+            }
+            
+            public func stringValue() -> String {
+                return String(describing: self)
+            }
+        }
+
+		public static var cases: [Visibility] {
 			get {
-				var enums: [Visibility] = [
-					.visible,
-					.invisible,
-					]
-				
-				for direction in Direction.enums {
-					for stick in Stick.enums {
-						enums.append(.gone(direction, to: stick))
-					}
-				}
-				
-				return enums
+                return [
+                    .visible,
+                    .invisible,
+                    .gone(.none, to: .none)
+                ]
 			}
 		}
 		
-		public func stringValue() -> String {
-			switch self {
-			case .visible:
-				return "Visible"
-			case .invisible:
-				return "Invisible"
-			case .gone(let direction, let stick):
-				return "Gone(\(direction.stringValue()), \(stick.stringValue()))"
-			}
-		}
+        public func stringValue() -> String {
+            return String(describing: self)
+        }
 	}
 	
 	var visibility: Visibility {
@@ -338,7 +321,7 @@ public extension UIView {
 		case .invisible:
 			hidden = true
 			
-		case .gone(let direction, let stick):
+		case .gone(let direction, let sticky):
 			hidden = true
 			
 			// deacitivate attributes
@@ -377,6 +360,8 @@ public extension UIView {
 					.centerYWithinMargins,
 				]
 				activateAttribute = .height
+            case .none:
+                deacitivateAttributes = [.notAnAttribute]
 			}
 
 			//
@@ -409,9 +394,9 @@ public extension UIView {
 			)
 			
 			// sticky attribute
-			if stick != .none {
+			if sticky != .none {
 				var stickyAttribute: NSLayoutAttribute
-				switch stick {
+				switch sticky {
 				case .left:
 					stickyAttribute = .leading
 				case .right:
@@ -426,12 +411,14 @@ public extension UIView {
 						stickyAttribute = .centerX
 					case .vertically:
 						stickyAttribute = .centerY
+                    case .none:
+                        stickyAttribute = .notAnAttribute
 					}
 				case .none:
 					stickyAttribute = .notAnAttribute
 				}
 				
-				// stick to the specified edge
+				// sticky to the specified edge
 				if let subview = self.subviews.first, stickyAttribute != .notAnAttribute {
 					activateConstraints.append(
 						NSLayoutConstraint(
@@ -476,3 +463,12 @@ public extension UIView {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+

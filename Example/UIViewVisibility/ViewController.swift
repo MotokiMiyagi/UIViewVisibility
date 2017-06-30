@@ -60,7 +60,9 @@ class ViewController: UIViewController {
 		super.viewWillAppear(animated)
 
 		updateSegmentedControl()
-	}
+
+        
+    }
 	
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		super.touchesEnded(touches, with: event)
@@ -113,6 +115,8 @@ private extension ViewController {
 				
 			case .vertically:
 				segmentedControl.selectedSegmentIndex = 3
+            case .none:
+                segmentedControl.selectedSegmentIndex = 3
 			}
 		}
 	}
@@ -154,14 +158,14 @@ extension ViewController: UIPickerViewDataSource {
 	}
 
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return UIView.Visibility.enums.count
+		return UIView.Visibility.cases.count
 //		return 3
 	}
 }
 
 extension ViewController: UIPickerViewDelegate {
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		return UIView.Visibility.enums[row].stringValue()
+		return UIView.Visibility.cases[row].stringValue()
 //		return ""
 	}
 }
